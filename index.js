@@ -38,3 +38,74 @@ const operar = (op)=>{
 }
 
 let nani = operar(operacion)
+
+
+
+
+
+
+
+
+
+let operation = "";
+
+const buttonLabels = [
+  "M+",
+  "M-",
+  "MR",
+  "/",
+  "7",
+  "8",
+  "9",
+  "+",
+  "4",
+  "5",
+  "6",
+  "-",
+  "1",
+  "2",
+  "3",
+  "+",
+  "",
+  "0",
+  "",
+  "",
+];
+
+const stringToHTML = (s) => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(s, "text/html");
+  return doc.body.firstChild;
+};
+
+const setInput = () => {
+  const calculatorInput = document.getElementById("input-calculator");
+  calculatorInput.value = operation;
+  console.log(operation);
+};
+
+const createButton = (label) => {
+  const buttonElement = stringToHTML(`<button class="button">${label}</button>`);
+  buttonElement.addEventListener("click", () => {
+    operation += label;
+    setInput();
+  });
+  return buttonElement;
+};
+
+const renderButtons = () => {
+  const buttonsContainer = document.getElementById("buttons");
+
+  buttonLabels.forEach((label) => {
+    if (label === "") buttonsContainer.appendChild(document.createElement("div"));
+    else {
+      const button = createButton(label);
+      buttonsContainer.appendChild(button);
+    }
+  });
+};
+
+window.onload = () => {
+  renderButtons();
+};
+
