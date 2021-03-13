@@ -1,0 +1,21 @@
+#app {
+	margin: 20px auto;
+	width: 50%;
+}
+
+.buttons {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 10px;
+	row-gap: 10px;
+}
+
+.button {
+	padding: 10px 30px;
+}
+
+.input {
+	padding: 10px 30px;
+	width: 100%;
+}
